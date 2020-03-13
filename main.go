@@ -29,7 +29,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "ogh"
 	app.Usage = "Ozone Github Development helper"
-	app.Commands = []cli.Command{
+	app.Commands = []*cli.Command{
 		{
 			Name:    "review",
 			Aliases: []string{"r"},
@@ -50,11 +50,11 @@ func main() {
 			Name:    "builds",
 			Aliases: []string{"b"},
 			Usage:   "Print out github action related information",
-			Subcommands: []cli.Command{
+			Subcommands: []*cli.Command{
 				{
 					Name:  "master",
 					Usage: "Show all the available pull requests",
-					Subcommands: []cli.Command{
+					Subcommands: []*cli.Command{
 
 					},
 					Action: func(c *cli.Context) error {
@@ -64,13 +64,13 @@ func main() {
 				{
 					Name:  "fork",
 					Usage: "Show the builds from a specified forked repository",
-					Flags: []cli.Flag{
+					Flags: []&cli.Flag{
 						cli.StringFlag{
 							Name:  "user",
 							Usage: "Github user name",
 						},
 					},
-					Subcommands: []cli.Command{
+					Subcommands: []*cli.Command{
 
 					},
 					Action: func(c *cli.Context) error {
